@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -17,3 +18,8 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+// Usuários:
+
+Route::get('/users', [UserController::class,'ListarUsuarios'])->name('user.list');
+Route::post('/users', [UserController::class,'store'])->name('user.create');
