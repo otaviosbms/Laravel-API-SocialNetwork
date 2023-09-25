@@ -12,7 +12,7 @@ class UserController extends Controller
      */
     public function ListarUsuarios()
     {
-        $usuarios = User::all();
+        $usuarios = User::with('posts')->get();
 
         return response()->json($usuarios);
     }
