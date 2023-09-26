@@ -14,6 +14,13 @@ class PostController extends Controller
         return response()->json($posts);
     }
 
+    // public function ListarPostsUsuario(int $id)
+    // {
+    //     $posts = Post::all();
+
+    //     return response()->json($posts);
+    // }
+
     public function store(Request $request)
     {
 

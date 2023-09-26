@@ -14,14 +14,14 @@ class Marker extends Model
         'post_id',
     ];
 
-    public function user()
+public function user()
 {
     return $this->belongsTo(User::class);
 }
 
-public function marker()
+public function post()
 {
-    return $this->belongsTo(Marker::class);
+    return $this->belongsTo(Post::class);
 }
 
 }

@@ -52,22 +52,22 @@ class User extends Authenticatable
 
     public function comments()
     {
-        return $this->hasMany(Comment::class);
+        return $this->HasManyThrough(Post::class, Comment::class);
     }
 
     public function likes()
     {
-        return $this->belongsToMany(Like::class);
+        return $this->hasManyThrough(Post::class, Like::class);
     }
 
     public function markers()
     {
-        return $this->belongsToMany(Marker::class);
+        return $this->hasManyThrough(Post::class, Marker::class);
     }
 
     public function followers()
     {
-        return $this->belongsToMany(Follower::class);
+        return $this->hasMany(Follower::class);
     }
 
 }
