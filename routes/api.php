@@ -20,12 +20,18 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+
 // Usuários:
 
+Route::post('/users', [UserController::class,'CriarUsuario'])->name('user.create');
 Route::get('/users', [UserController::class,'ListarUsuarios'])->name('user.list');
-Route::post('/users', [UserController::class,'store'])->name('user.create');
 
 // Posts:
 
+Route::post('/posts', [PostController::class,'CriarPost'])->name('post.create');
 Route::get('/posts', [PostController::class,'ListarPosts'])->name('post.list');
-Route::post('/posts', [PostController::class,'store'])->name('post.create');
+
+// comentarios:
+
+Route::post('/users/{id}/comments', [UserController::class,'CriarComentario'])->name('comment.create');
+Route::get('/users/{id}/comments', [UserController::class,'ListarComentarios'])->name('user.comments');

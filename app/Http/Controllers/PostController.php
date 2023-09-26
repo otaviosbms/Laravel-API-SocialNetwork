@@ -7,21 +7,8 @@ use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
-    public function ListarPosts()
-    {
-        $posts = Post::all();
 
-        return response()->json($posts);
-    }
-
-    // public function ListarPostsUsuario(int $id)
-    // {
-    //     $posts = Post::all();
-
-    //     return response()->json($posts);
-    // }
-
-    public function store(Request $request)
+    public function CriarPost(Request $request)
     {
 
         $post = new Post($request->all());
@@ -29,4 +16,13 @@ class PostController extends Controller
         return response()->json($post, 201);
 
     }
+
+    public function ListarPosts()
+    {
+        $posts = Post::with('comments')->get();
+
+        return response()->json($posts);
+    }
+
+
 }

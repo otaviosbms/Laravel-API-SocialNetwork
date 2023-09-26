@@ -7,6 +7,11 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use App\Models\Comment;
+use App\Models\Like;
+use App\Models\Post;
+use App\Models\Marker;
+use App\Models\Follower;
 
 class User extends Authenticatable
 {
@@ -52,17 +57,17 @@ class User extends Authenticatable
 
     public function comments()
     {
-        return $this->HasManyThrough(Post::class, Comment::class);
+        return $this->HasManyThrough(Comment::class, Post::class);
     }
 
     public function likes()
     {
-        return $this->hasManyThrough(Post::class, Like::class);
+        return $this->hasManyThrough(Like::class, Post::class);
     }
 
     public function markers()
     {
-        return $this->hasManyThrough(Post::class, Marker::class);
+        return $this->hasManyThrough(Marker::class, Post::class);
     }
 
     public function followers()
