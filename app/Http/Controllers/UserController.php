@@ -33,12 +33,10 @@ class UserController extends Controller
     }
 
 
-
     // comentarios
 
     public function CriarComentario(Request $request, int $id)
     {
-
 
         $comentario = new Comment([
             'user_id' => $id,
