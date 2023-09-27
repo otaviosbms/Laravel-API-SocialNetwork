@@ -9,9 +9,6 @@ use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
 
 
     // usuarios
@@ -48,7 +45,6 @@ class UserController extends Controller
         $comentario->save();
         return response()->json($comentario, 201);
     }
-
 
 
     public function ListarComentarios(int $id)
