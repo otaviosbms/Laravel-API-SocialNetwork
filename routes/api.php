@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\CommentController;
+use App\Http\Controllers\LikeController;
+use App\Http\Controllers\MarkerController;
 use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -34,8 +36,14 @@ Route::get('/posts', [PostController::class,'ListarPosts'])->name('listar.post')
 
 // comentarios:
 
-Route::post('/users/comments', [CommentController::class,'CriarComentario'])->name('create.comantario');
-Route::get('/users/comments', [CommentController::class,'ListarComentarios'])->name('listar.comentario');
+Route::post('/comments', [CommentController::class,'CriarComentario'])->name('criar.comantario');
+Route::get('/comments', [CommentController::class,'ListarComentarios'])->name('listar.comentario');
 
 // likes:
 
+Route::post('/likes', [LikeController::class,'DarLike'])->name('criar.like');
+
+
+// Marcadoeres:
+
+Route::post('/markers', [MarkerController::class,'CriarMarcador'])->name('criar.marcador');
