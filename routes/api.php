@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\CommentController;
 use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -23,15 +24,18 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 // Usuários:
 
-Route::post('/users', [UserController::class,'CriarUsuario'])->name('user.create');
-Route::get('/users', [UserController::class,'ListarUsuarios'])->name('user.list');
+Route::post('/users', [UserController::class,'CriarUsuario'])->name('criar.usuario');
+Route::get('/users', [UserController::class,'ListarUsuarios'])->name('listar.usuario');
 
 // Posts:
 
-Route::post('/posts', [PostController::class,'CriarPost'])->name('post.create');
-Route::get('/posts', [PostController::class,'ListarPosts'])->name('post.list');
+Route::post('/posts', [PostController::class,'CriarPost'])->name('criar.post');
+Route::get('/posts', [PostController::class,'ListarPosts'])->name('listar.post');
 
 // comentarios:
 
-Route::post('/users/{id}/comments', [UserController::class,'CriarComentario'])->name('comment.create');
-Route::get('/users/{id}/comments', [UserController::class,'ListarComentarios'])->name('user.comments');
+Route::post('/users/comments', [CommentController::class,'CriarComentario'])->name('create.comantario');
+Route::get('/users/comments', [CommentController::class,'ListarComentarios'])->name('listar.comentario');
+
+// likes:
+

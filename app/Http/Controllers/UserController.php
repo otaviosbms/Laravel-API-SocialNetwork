@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Exceptions\UserCreateException;
 use App\Models\Comment;
 use App\Models\Post;
 use App\Models\User;
@@ -12,13 +13,17 @@ class UserController extends Controller
 
 
     // usuarios
-    
+
     public function CriarUsuario(Request $request)
     {
 
-        $usuario = new User($request->all());
-        $usuario->save();
-        return response()->json($usuario, 201);
+        try{
+            $usuario = User::create($request->all());
+            return response()->json($usuario, 201);
+        }catch(UserCreateException $exception){
+            return response()->json(["Error" => "não foi possivel criar usuario" ], 201);
+        }
+
 
     }
 
@@ -27,32 +32,6 @@ class UserController extends Controller
         $usuarios = User::all();
 
         return response()->json($usuarios);
-    }
-
-
-    // comentarios
-
-    public function CriarComentario(Request $request, int $id)
-    {
-
-        $comentario = new Comment([
-            'user_id' => $id,
-            'post_id' => $request->post_id,
-            'post_user_id' => $request->post_user_id,
-            'content' => $request->content
-        ]);
-
-        $comentario->save();
-        return response()->json($comentario, 201);
-    }
-
-
-    public function ListarComentarios(int $id)
-    {
-
-        $comentarios = User::find($id)->comments;
-
-        return response()->json($comentarios);
     }
 
 
