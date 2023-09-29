@@ -27,7 +27,7 @@ class UserController extends Controller
 
     }
 
-    public function ListarUsuarios()
+    public function ListarTodosUsuarios()
     {
         $usuarios = User::all();
 

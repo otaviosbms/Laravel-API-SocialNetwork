@@ -13,19 +13,16 @@ class CommentController extends Controller
     public function CriarComentario(Request $request)
     {
 
-        $comentario = new Comment([
-            'user_id' => $request->id,
-            'post_id' => $request->post_id,
-            'content' => $request->content
-        ]);
+        $comentario = new Comment($request->all());
 
         $comentario->save();
         return response()->json($comentario, 201);
     }
 
 
-    public function ListarComentarios(int $id)
+    public function ListarComentariosDoUsuario(int $id)
     {
+
 
         $comentarios = User::find($id)->comments;
 

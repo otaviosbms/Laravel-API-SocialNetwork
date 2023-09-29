@@ -21,7 +21,7 @@ class PostController extends Controller
 
     }
 
-    public function ListarPosts()
+    public function ListarTodosPosts()
     {
 
         $posts = Post::all();

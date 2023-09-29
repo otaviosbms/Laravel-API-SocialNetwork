@@ -62,12 +62,12 @@ class User extends Authenticatable
 
     public function likes()
     {
-        return $this->hasManyThrough(Like::class, Post::class);
+        return $this->hasmany(Like::class);
     }
 
     public function markers()
     {
-        return $this->hasManyThrough(Marker::class, Post::class);
+        return $this->hasmany(Marker::class);
     }
 
     public function followers()

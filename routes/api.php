@@ -27,23 +27,25 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 // Usuários:
 
 Route::post('/users', [UserController::class,'CriarUsuario'])->name('criar.usuario');
-Route::get('/users', [UserController::class,'ListarUsuarios'])->name('listar.usuario');
+Route::get('/users', [UserController::class,'ListarTodosUsuarios'])->name('listar.usuarios');
 
 // Posts:
 
 Route::post('/posts', [PostController::class,'CriarPost'])->name('criar.post');
-Route::get('/posts', [PostController::class,'ListarPosts'])->name('listar.post');
+Route::get('/posts', [PostController::class,'ListarTodosPosts'])->name('listar.posts');
 
 // comentarios:
 
 Route::post('/comments', [CommentController::class,'CriarComentario'])->name('criar.comantario');
-Route::get('/comments', [CommentController::class,'ListarComentarios'])->name('listar.comentario');
+Route::get('/user/{id}/comments', [CommentController::class,'ListarComentariosDoUsuario'])->name('listar.comentarios_usuario');
 
 // likes:
 
 Route::post('/likes', [LikeController::class,'DarLike'])->name('criar.like');
+Route::get('/user/{id}/likes', [LikeController::class,'listarLikesDoUsuario'])->name('listar.like_usuario');
 
 
 // Marcadoeres:
 
 Route::post('/markers', [MarkerController::class,'CriarMarcador'])->name('criar.marcador');
+Route::get('/user/{id}/markers', [MarkerController::class,'listarMarcadoresDoUsuario'])->name('listar.marcador_usuario');

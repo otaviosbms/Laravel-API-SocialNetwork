@@ -19,4 +19,13 @@ class LikeController extends Controller
         return response()->json($like, 201);
 
     }
+
+    public function ListarLikesDoUsuario(int $id)
+    {
+
+        $likes = Like::find($id)->markers;
+
+        return response()->json($likes);
+
+    }
 }
