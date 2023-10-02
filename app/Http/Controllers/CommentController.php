@@ -23,8 +23,7 @@ class CommentController extends Controller
     public function ListarComentariosDoUsuario(int $id)
     {
 
-
-        $comentarios = User::find($id)->comments;
+        $comentarios = User::all();
 
         return response()->json($comentarios);
     }

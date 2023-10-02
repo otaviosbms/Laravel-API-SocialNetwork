@@ -27,6 +27,14 @@ class UserController extends Controller
 
     }
 
+    public function ExcluirUsuario(int $id)
+    {
+        User::find($id)->delete();
+
+        return response()->noContent();
+
+    }
+
     public function ListarTodosUsuarios()
     {
         $usuarios = User::all();

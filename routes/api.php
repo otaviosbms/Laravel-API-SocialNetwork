@@ -27,6 +27,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 // Usuários:
 
 Route::post('/users', [UserController::class,'CriarUsuario'])->name('criar.usuario');
+Route::delete('/users/{id}', [UserController::class,'ExcluirUsuario'])->name('excluir.usuario');
 Route::get('/users', [UserController::class,'ListarTodosUsuarios'])->name('listar.usuarios');
 
 // Posts:

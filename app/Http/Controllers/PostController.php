@@ -24,7 +24,7 @@ class PostController extends Controller
     public function ListarTodosPosts()
     {
 
-        $posts = Post::all();
+        $posts = Post::with('comments')->get();
 
         return response()->json($posts);
     }
