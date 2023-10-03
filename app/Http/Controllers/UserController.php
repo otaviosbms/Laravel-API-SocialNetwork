@@ -29,6 +29,13 @@ class UserController extends Controller
 
     public function ExcluirUsuario(int $id)
     {
+
+        $user = User::find($id);
+
+        if (!$user) {
+            return response()->json(['message' => 'Usuário não encontrado'], 404);
+        }
+
         User::find($id)->delete();
 
         return response()->noContent();

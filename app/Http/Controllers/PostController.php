@@ -21,6 +21,7 @@ class PostController extends Controller
 
     }
 
+
     public function ListarTodosPosts()
     {
 
@@ -30,5 +31,33 @@ class PostController extends Controller
     }
 
 
+    public function ListarPostsDoUsuario(int $id)
+    {
+
+        $user = User::find($id);
+
+        if (!$user) {
+            return response()->json(['message' => 'Usuário não encontrado'], 404);
+        }
+    
+        $posts = $user->posts()->with('comments')->get();
+    
+        return response()->json($posts);
+    }
+
+
+    public function AtualizarPost(Request $request, int $id)
+    {
+
+        $post = Post::find($id);
+        if (!$post) {
+            return response()->json(['mensagem' => 'post não encontrado'], 404);
+        }
+
+        $post->update($request->toArray());
+
+        return response()->json($post);
+
+    }
 
 }

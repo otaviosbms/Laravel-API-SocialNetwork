@@ -34,19 +34,22 @@ Route::get('/users', [UserController::class,'ListarTodosUsuarios'])->name('lista
 
 Route::post('/posts', [PostController::class,'CriarPost'])->name('criar.post');
 Route::get('/posts', [PostController::class,'ListarTodosPosts'])->name('listar.posts');
+Route::get('/user/{id}/posts', [PostController::class,'ListarPostsDoUsuario'])->name('listar.postsDoUsuario');
+Route::put('/posts/{id}', [PostController::class,'AtualizarPost'])->name('atualizar.post');
 
 // comentarios:
 
 Route::post('/comments', [CommentController::class,'CriarComentario'])->name('criar.comantario');
-Route::get('/user/{id}/comments', [CommentController::class,'ListarComentariosDoUsuario'])->name('listar.comentarios_usuario');
+Route::get('/user/{id}/comments', [CommentController::class,'ListarComentariosDoUsuario'])->name('listar.comentariosDoUsuario');
+Route::put('/comments/{id}', [CommentController::class,'AtualizarComentario'])->name('atualizar.comentario');
 
 // likes:
 
 Route::post('/likes', [LikeController::class,'DarLike'])->name('criar.like');
-Route::get('/user/{id}/likes', [LikeController::class,'listarLikesDoUsuario'])->name('listar.like_usuario');
+Route::get('/user/{id}/likes', [LikeController::class,'listarLikesDoUsuario'])->name('listar.likesDoUsuario');
 
 
 // Marcadoeres:
 
 Route::post('/markers', [MarkerController::class,'CriarMarcador'])->name('criar.marcador');
-Route::get('/user/{id}/markers', [MarkerController::class,'listarMarcadoresDoUsuario'])->name('listar.marcador_usuario');
+Route::get('/user/{id}/markers', [MarkerController::class,'listarMarcadoresDoUsuario'])->name('listar.marcadoresDoUsuario');

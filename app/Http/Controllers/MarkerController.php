@@ -13,8 +13,6 @@ class MarkerController extends Controller
     public function CriarMarcador(Request $request)
     {
 
-
-
         $marcador = new Marker($request->all());
 
         $marcador->save();
@@ -22,6 +20,7 @@ class MarkerController extends Controller
 
     }
 
+    
     public function ListarMarcadoresDoUsuario(int $id)
     {
 
