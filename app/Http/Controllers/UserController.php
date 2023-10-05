@@ -38,7 +38,7 @@ class UserController extends Controller
 
         User::find($id)->delete();
 
-        return response()->noContent();
+        return response()->json(['message' => 'Usuario excluido com sucesso'], 200);;
 
     }
 

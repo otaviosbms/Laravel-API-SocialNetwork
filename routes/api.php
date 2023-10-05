@@ -45,7 +45,8 @@ Route::put('/comments/{id}', [CommentController::class,'AtualizarComentario'])->
 
 // likes:
 
-Route::post('/likes', [LikeController::class,'DarLike'])->name('criar.like');
+Route::post('/likes', [LikeController::class,'CriarLike'])->name('criar.like');
+Route::delete('/likes', [LikeController::class,'RemoverLike'])->name('excluir.like');
 Route::get('/user/{id}/likes', [LikeController::class,'listarLikesDoUsuario'])->name('listar.likesDoUsuario');
 
 

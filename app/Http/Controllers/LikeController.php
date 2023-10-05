@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Like;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class LikeController extends Controller
@@ -10,7 +11,7 @@ class LikeController extends Controller
 
     // Likes
 
-    public function DarLike(Request $request)
+    public function CriarLike(Request $request)
     {
 
         $like = new Like($request->all());
@@ -20,11 +21,28 @@ class LikeController extends Controller
 
     }
 
+
+    public function RemoverLike(Request $request)
+    {
+
+        $likeId = $request->input('like_id');
+
+        $like = Like::find($likeId);
+
+        if (!$like) {
+            return response()->json(['message' => 'Like não encontrado'], 404);
+        }
+
+        $like->delete();
+
+        return response()->json(['message' => 'Like removido com sucesso'], 200);
+    }
+
     
     public function ListarLikesDoUsuario(int $id)
     {
 
-        $likes = Like::find($id)->markers;
+        $likes = User::find($id)->likes;
 
         return response()->json($likes);
 
