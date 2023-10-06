@@ -22,12 +22,10 @@ class LikeController extends Controller
     }
 
 
-    public function RemoverLike(Request $request)
+    public function RemoverLike(int $id)
     {
 
-        $likeId = $request->input('like_id');
-
-        $like = Like::find($likeId);
+        $like = Like::find($id);
 
         if (!$like) {
             return response()->json(['message' => 'Like não encontrado'], 404);
