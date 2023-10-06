@@ -19,7 +19,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+Route::middleware('auth:sanctum')->get('/users', function (Request $request) {
     return $request->user();
 });
 
@@ -34,20 +34,20 @@ Route::get('/users', [UserController::class,'ListarTodosUsuarios'])->name('lista
 
 Route::post('/posts', [PostController::class,'CriarPost'])->name('criar.post');
 Route::get('/posts', [PostController::class,'ListarTodosPosts'])->name('listar.posts');
-Route::get('/user/{id}/posts', [PostController::class,'ListarPostsDoUsuario'])->name('listar.postsDoUsuario');
-Route::put('/posts/{id}', [PostController::class,'AtualizarPost'])->name('atualizar.post');
+Route::get('/users/{id}/posts', [PostController::class,'ListarPostsDoUsuario'])->name('listar.postsDoUsuario');
+Route::patch('/posts/{id}', [PostController::class,'AtualizarPost'])->name('atualizar.post');
 
 // comentarios:
 
 Route::post('/comments', [CommentController::class,'CriarComentario'])->name('criar.comantario');
-Route::get('/user/{id}/comments', [CommentController::class,'ListarComentariosDoUsuario'])->name('listar.comentariosDoUsuario');
-Route::put('/comments/{id}', [CommentController::class,'AtualizarComentario'])->name('atualizar.comentario');
+Route::get('/users/{id}/comments', [CommentController::class,'ListarComentariosDoUsuario'])->name('listar.comentariosDoUsuario');
+Route::patch('/comments/{id}', [CommentController::class,'AtualizarComentario'])->name('atualizar.comentario');
 
 // likes:
 
 Route::post('/likes', [LikeController::class,'CriarLike'])->name('criar.like');
 Route::delete('/likes', [LikeController::class,'RemoverLike'])->name('excluir.like');
-Route::get('/user/{id}/likes', [LikeController::class,'listarLikesDoUsuario'])->name('listar.likesDoUsuario');
+Route::get('/users/{id}/likes', [LikeController::class,'listarLikesDoUsuario'])->name('listar.likesDoUsuario');
 
 
 // Marcadoeres:

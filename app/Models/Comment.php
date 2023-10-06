@@ -13,6 +13,11 @@ class Comment extends Model
         'user_id',
         'post_id',
         'content',
+        'edited'
+    ];
+
+    protected $casts = [
+        'edited' => 'boolean',
     ];
 
     public function post()

@@ -43,10 +43,7 @@ class CommentController extends Controller
             return response()->json(['mensagem' => 'comentario não encontrado'], 404);
         }
 
-        dd($request->toArray());
-
         $comentario->update($request->toArray());
-        
 
         return response()->json($comentario);
 

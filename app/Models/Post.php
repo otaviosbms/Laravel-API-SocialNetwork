@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -12,6 +13,11 @@ class Post extends Model
     protected $fillable = [
         'user_id',
         'content',
+        'edited'
+    ];
+
+    protected $casts = [
+        'edited' => 'boolean',
     ];
 
     public function comments()

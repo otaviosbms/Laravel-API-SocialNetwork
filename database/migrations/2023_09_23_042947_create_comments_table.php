@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->integer('user_id');
             $table->integer('post_id');
+            $table->boolean('edited')->default(false);
             $table->string('content');
             $table->timestamps();
 
