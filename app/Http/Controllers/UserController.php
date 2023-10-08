@@ -11,8 +11,25 @@ use Illuminate\Http\Request;
 class UserController extends Controller
 {
 
-
     // usuarios
+
+    // * busca de usuarios por filtro + paginação: 
+
+
+    public function BuscaDeUsuarios(Request $request)
+    {
+
+        $query = User::query();
+    
+        if ($request->has('name')){
+
+            $query->whereName($request->name);
+        }
+    
+        return $query->paginate(5);
+    }
+
+
 
     public function CriarUsuario(Request $request)
     {
@@ -27,6 +44,7 @@ class UserController extends Controller
 
     }
 
+
     public function ExcluirUsuario(int $id)
     {
 
@@ -40,13 +58,6 @@ class UserController extends Controller
 
         return response()->json(['message' => 'Usuario excluido com sucesso'], 200);;
 
-    }
-
-    public function ListarTodosUsuarios()
-    {
-        $usuarios = User::all();
-
-        return response()->json($usuarios);
     }
 
 
