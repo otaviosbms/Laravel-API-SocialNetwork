@@ -30,4 +30,18 @@ class MarkerController extends Controller
 
     }
 
+    public function RemoverMarcador(int $id)
+    {
+
+        $marcador = Marker::find($id);
+
+        if (!$marcador) {
+            return response()->json(['message' => 'marcador não encontrado'], 404);
+        }
+
+        $marcador->delete();
+
+        return response()->json(['message' => 'marcador removido com sucesso'], 200);
+    }
+
 }
