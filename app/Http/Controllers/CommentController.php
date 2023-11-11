@@ -49,4 +49,19 @@ class CommentController extends Controller
 
     }
 
+    public function RemoverComentario(int $id)
+    {
+
+        $comentario = Comment::find($id);
+
+        if (!$comentario) {
+            return response()->json(['message' => 'Comentario não encontrado'], 404);
+        }
+
+        $comentario->delete();
+
+        return response()->json(['message' => 'Comentario removido com sucesso'], 200);
+    }
+
+
 }

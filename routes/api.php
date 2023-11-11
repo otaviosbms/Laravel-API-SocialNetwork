@@ -33,7 +33,7 @@ Route::post('/login', [LoginController::class,'Login'])->name('login');
 // Usuários:
 
 Route::post('/users', [UserController::class,'CriarUsuario'])->name('criar.usuario');
-Route::delete('/users/{id}', [UserController::class,'ExcluirUsuario'])->name('excluir.usuario');
+Route::delete('/users/{id}', [UserController::class,'ExcluirUsuario'])->name('apagar.usuario');
 Route::get('/users', [UserController::class,'BuscaDeUsuarios'])->name('Buscar.usuarios');
 
 // Posts:
@@ -41,23 +41,25 @@ Route::get('/users', [UserController::class,'BuscaDeUsuarios'])->name('Buscar.us
 Route::post('/posts', [PostController::class,'CriarPost'])->name('criar.post');
 Route::get('/posts', [PostController::class,'ListarTodosPosts'])->name('listar.posts');
 Route::get('/users/{id}/posts', [PostController::class,'ListarPostsDoUsuario'])->name('listar.postsDoUsuario');
+Route::delete('/posts/{id}', [PostController::class,'RemoverPost'])->name('apagar.post');
 Route::patch('/posts/{id}', [PostController::class,'AtualizarPost'])->name('atualizar.post');
 
 // comentarios:
 
 Route::post('/comments', [CommentController::class,'CriarComentario'])->name('criar.comantario');
+Route::delete('/comments/{id}', [CommentController::class,'RemoverComentario'])->name('apagar.comentario');
 Route::get('/users/{id}/comments', [CommentController::class,'ListarComentariosDoUsuario'])->name('listar.comentariosDoUsuario');
 Route::patch('/comments/{id}', [CommentController::class,'AtualizarComentario'])->name('atualizar.comentario');
 
 // likes:
 
 Route::post('/likes', [LikeController::class,'CriarLike'])->name('criar.like');
-Route::delete('/likes/{id}', [LikeController::class,'RemoverLike'])->name('excluir.like');
+Route::delete('/likes/{id}', [LikeController::class,'RemoverLike'])->name('apagar.like');
 Route::get('/users/{id}/likes', [LikeController::class,'listarLikesDoUsuario'])->name('listar.likesDoUsuario');
 
 
 // Marcadoeres:
 
 Route::post('/markers', [MarkerController::class,'CriarMarcador'])->name('criar.marcador');
-Route::delete('/markers/{id}', [MarkerController::class,'RemoverMarcador'])->name('excluir.marcador');
+Route::delete('/markers/{id}', [MarkerController::class,'RemoverMarcador'])->name('apagar.marcador');
 Route::get('/user/{id}/markers', [MarkerController::class,'listarMarcadoresDoUsuario'])->name('listar.marcadoresDoUsuario');
